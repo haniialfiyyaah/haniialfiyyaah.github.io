@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's Your Favorite?</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet"> -->
+
+</head>
+<body>
+    <div class="choose-bg">
+        <section id="ready" class="ready" style="display: none;">
+            <div class="container">
+                <h1 class="title">Ready?</h1>
+                <button class="btn" id="yes">
+                    YES
+                </button>
+                <a href="index.html">
+                    <button class="btn" id="no">
+                        NO
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <section id="choose" class="choose" style="display: none;">
+            <div class="container">
+                <h1>What's Your Favorite?</h1>
+                <h5>Choose One Of Them</h5>
+                <div id="firstChoice">
+                    <button id="firstButton">
+                        <img id="firstImage" src="" alt="">
+                    </button>
+                    <h4 id="firstName">Drama Name</h4>
+                </div>
+                <div id="secondChoice">
+                    <button id="secondButton">
+                        <img id="secondImage" src="" alt="">
+                    </button>
+                    <h4 id="secondName">Drama Name</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="result" class="result" style="display: none;">
+            <div class="container">
+                <h1>YEAY!!!</h1>
+                <h3>Among few Drama on 2020 list</h3>
+                <div>
+                    <ul id="listDramaName">
+                    </ul>
+                </div>
+                
+
+                <h3>Here is Your Favorite!</h3>
+                <div id="favorite">
+                    <button>
+                        <img id="favoriteImage" src="" alt="">
+                    </button>
+                    <h4 id="favoriteName">Drama Name</h4>
+                </div>
+
+                <a href="index.html">
+                    <button class="btn" id="back">
+                        BACK
+                    </button>
+                </a>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script src="assets/js/function.js"></script>
+</body>
+</html>

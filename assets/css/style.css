@@ -1,0 +1,80 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    /* font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.container { /* make container for every section */
+    /* position: relative; */
+    width: 100%;
+    max-width: 90%;
+    margin: 0;
+    
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container .title {
+    /* left: 35%; */
+    font-family: 'Satisfy', cursive;
+    font-size: 4em;
+    color: darkcyan;
+    /* margin-top: 1.5em; */
+}
+.container .btn {
+    background-color: transparent;
+    border: 1px solid darkcyan;
+    color: darkcyan;
+    font-size: 24px;
+    padding: 12px 50px;
+    cursor: pointer;
+    border-radius: 1em;
+    text-align: center;
+}
+.container .btn:hover {
+    background-color: darkcyan;
+    color: white;
+}
+/* HOME .html */
+.home-bg {
+    background-image: url("../img/background.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home .container .title {
+    position: absolute;
+    top: 15%;
+}
+.home .container .btn {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    /* -ms-transform: translate(-50%, -50%); */
+}
+
+/* CHOOSE.html */
+.chose .container h5 {
+    text-align: center;
+    background-color: springgreen;
+    color: springgreen;
+}
+
+.choose .container button {
+    width: auto;
+    height: auto;
+}
+.choose .container button img {
+    width: 40em;
+    height: auto;
+}

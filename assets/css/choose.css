@@ -1,0 +1,59 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    /* font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.bg {
+    background-image: url("../img/background.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container { /* make container for every section */
+    /* position: relative; */
+    width: 100%;
+    max-width: 90%;
+    margin: 0;
+    
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container #title {
+    position: absolute;
+    top: 15%;
+    /* left: 35%; */
+    font-family: 'Satisfy', cursive;
+    font-size: 4em;
+    color: darkcyan;
+    /* margin-top: 1.5em; */
+}
+
+
+/* 
+.backgroundImage {
+    
+}
+
+.container .background {
+    /* height: 20px; */
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    /* -ms-transform: translate(0%, -50%); */
+    width: 40%;
+    height: auto;
+    /* border: 2px solid springgreen; */
+} */
