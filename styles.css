@@ -6,17 +6,19 @@
 }
 
 :root {
-    --primary-color: #646cff;
-    --secondary-color: #535bf2;
-    --accent-color: #747bff;
-    --text-color: #213547;
-    --light-text: #666;
+    --primary-color: #0ea5e9;
+    --secondary-color: #0284c7;
+    --accent-color: #38bdf8;
+    --text-color: #0f172a;
+    --light-text: #64748b;
     --background: #ffffff;
-    --section-bg: #f9fafb;
+    --section-bg: #f8fafc;
     --card-bg: #ffffff;
-    --gradient: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
-    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 body {
@@ -32,30 +34,30 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
+    background: var(--glass-bg);
     backdrop-filter: blur(10px);
-    box-shadow: var(--card-shadow);
+    border-bottom: var(--glass-border);
 }
 
 nav {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1.2rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--primary-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -1px;
 }
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem;
     list-style: none;
 }
 
@@ -63,6 +65,7 @@ nav {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -84,13 +87,13 @@ nav {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 0 2rem;
-    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     position: relative;
     overflow: hidden;
 }
@@ -100,7 +103,7 @@ nav {
     position: absolute;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(100, 108, 255, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
     animation: rotate 20s linear infinite;
 }
 
@@ -112,44 +115,57 @@ nav {
 .hero-content {
     position: relative;
     z-index: 1;
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
 }
 
 .subtitle {
     font-size: 1.5rem;
     color: var(--light-text);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
 }
 
 .tech-stack {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .tech-tag {
-    background: var(--gradient);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: var(--primary-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
     font-weight: 500;
+    border: var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
     padding: 1rem 2.5rem;
-    border-radius: 8px;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -181,9 +197,10 @@ nav {
 }
 
 .secondary {
-    background-color: transparent;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: var(--glass-border);
     margin-left: 1rem;
 }
 
@@ -200,6 +217,8 @@ section h2 {
     position: relative;
     display: inline-block;
     color: var(--text-color);
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 section h2::after {
@@ -222,10 +241,12 @@ section h2::after {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
-    background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 3.5rem;
+    border-radius: 20px;
     box-shadow: var(--card-shadow);
+    border: var(--glass-border);
 }
 
 .skills ul {
@@ -237,19 +258,23 @@ section h2::after {
 }
 
 .skills li {
-    background: var(--gradient);
-    color: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: var(--primary-color);
     padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    transition: transform 0.3s ease;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border: var(--glass-border);
 }
 
 .skills li:hover {
     transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
 }
 
 /* Projects Section */
@@ -262,13 +287,15 @@ section h2::after {
 }
 
 .project-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
     box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: var(--glass-border);
 }
 
 .project-card::before {
@@ -297,15 +324,15 @@ section h2::after {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .project-tech span {
     background: var(--section-bg);
     color: var(--primary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
     font-weight: 500;
 }
 
@@ -320,13 +347,16 @@ section h2::after {
     font-size: 1.2rem;
     transition: all 0.3s ease;
     padding: 0.5rem;
-    border-radius: 8px;
-    background: var(--section-bg);
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: var(--glass-border);
 }
 
 .project-links a:hover {
     color: var(--accent-color);
     transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
 }
 
 /* Contact Section */
@@ -337,10 +367,12 @@ section h2::after {
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
-    background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 3.5rem;
+    border-radius: 20px;
     box-shadow: var(--card-shadow);
+    border: var(--glass-border);
 }
 
 .contact-info {
@@ -353,14 +385,17 @@ section h2::after {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.2rem;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: var(--glass-border);
 }
 
 .contact-item:hover {
-    background: var(--section-bg);
     transform: translateX(10px);
+    box-shadow: var(--card-shadow);
 }
 
 .contact-item i {
@@ -372,6 +407,7 @@ section h2::after {
     color: var(--text-color);
     text-decoration: none;
     font-size: 1.1rem;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
@@ -383,8 +419,10 @@ section h2::after {
 footer {
     text-align: center;
     padding: 2rem;
-    background: var(--gradient);
-    color: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    color: var(--text-color);
+    border-top: var(--glass-border);
 }
 
 /* Hero Stats */
@@ -397,50 +435,59 @@ footer {
 
 .stat-item {
     text-align: center;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 12px;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border: var(--glass-border);
 }
 
 .stat-item:hover {
     transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
 }
 
 .stat-item i {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .stat-item span {
     display: block;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
 .stat-item p {
     color: var(--light-text);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 /* Project Icons */
 .project-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: var(--gradient);
-    border-radius: 8px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-icon:hover {
+    transform: rotate(5deg);
 }
 
 .project-icon i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
 }
 
@@ -456,7 +503,7 @@ footer {
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .subtitle {
@@ -488,16 +535,16 @@ footer {
     }
 
     .stat-item {
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
     .project-icon {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
 
     .project-icon i {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .tech-stack {
