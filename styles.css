@@ -6,12 +6,15 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
+    --primary-color: #4f46e5;
+    --secondary-color: #818cf8;
+    --accent-color: #6366f1;
     --text-color: #1f2937;
     --light-text: #6b7280;
     --background: #ffffff;
-    --section-bg: #f3f4f6;
+    --section-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --gradient: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
 }
 
 body {
@@ -28,8 +31,8 @@ header {
     top: 0;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -42,14 +45,17 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    color: var(--primary-color);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     list-style: none;
 }
 
@@ -57,11 +63,23 @@ nav {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.nav-links a:hover {
-    color: var(--primary-color);
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Hero Section */
@@ -72,13 +90,37 @@ nav {
     justify-content: center;
     text-align: center;
     padding: 0 2rem;
-    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
-    color: var(--text-color);
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
@@ -90,20 +132,37 @@ nav {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
 }
 
 .primary {
-    background-color: var(--primary-color);
+    background: var(--gradient);
     color: white;
 }
 
@@ -116,13 +175,28 @@ nav {
 
 /* Sections */
 section {
-    padding: 5rem 2rem;
+    padding: 8rem 2rem;
+    position: relative;
 }
 
 section h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
 }
 
 /* About Section */
@@ -133,6 +207,10 @@ section h2 {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .skills ul {
@@ -140,15 +218,20 @@ section h2 {
     flex-wrap: wrap;
     gap: 1rem;
     list-style: none;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .skills li {
-    background-color: var(--primary-color);
+    background: var(--gradient);
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
     font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.skills li:hover {
+    transform: translateY(-3px);
 }
 
 /* Projects Section */
@@ -161,19 +244,39 @@ section h2 {
 }
 
 .project-card {
-    background-color: white;
+    background: var(--card-bg);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
 }
 
 .project-links {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     display: flex;
     gap: 1rem;
 }
@@ -181,11 +284,15 @@ section h2 {
 .project-links a {
     color: var(--primary-color);
     font-size: 1.2rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: var(--section-bg);
 }
 
 .project-links a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
 }
 
 /* Contact Section */
@@ -196,6 +303,10 @@ section h2 {
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .contact-info {
@@ -208,6 +319,14 @@ section h2 {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: var(--section-bg);
+    transform: translateX(10px);
 }
 
 .contact-item i {
@@ -230,8 +349,70 @@ section h2 {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: var(--text-color);
+    background: var(--gradient);
     color: white;
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* Project Icons */
+.project-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.project-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Skills Icons */
+.skills li i {
+    margin-right: 0.5rem;
 }
 
 /* Responsive Design */
@@ -255,5 +436,37 @@ footer {
     
     .secondary {
         margin-left: 0;
+    }
+
+    section {
+        padding: 4rem 1rem;
+    }
+
+    .about-content,
+    .contact-content {
+        padding: 2rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .stat-item {
+        padding: 1rem;
+    }
+
+    .stat-item span {
+        font-size: 1.5rem;
+    }
+
+    .project-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .project-icon i {
+        font-size: 1.2rem;
     }
 } 
