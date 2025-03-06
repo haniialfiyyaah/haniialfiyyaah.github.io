@@ -38,7 +38,7 @@ const Contact = () => {
             <span>LinkedIn</span>
           </a>
           <a
-            href="mailto:haniialfiyyaah@gmail.com"
+            href="mailto:hanii.alfiyyah@gmail.com"
             className="flex flex-col items-center space-y-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
           >
             <FaEnvelope className="h-10 w-10" />
