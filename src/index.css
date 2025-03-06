@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* Account for fixed header */
-  scroll-snap-type: y proximity; /* Changed from mandatory for smoother experience */
-}
-
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: normal; /* Changed from always to allow smoother scrolling */
-}
-
 :root {
   font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.5;

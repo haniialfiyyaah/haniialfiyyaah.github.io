@@ -34,102 +34,69 @@ const projects = [
 
 const Projects = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="w-full"
-    >
-      <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 text-transparent bg-clip-text mb-16">
-        Featured Projects
-      </h2>
+    <div className="py-20">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12"
+      >
+        My Projects
+      </motion.h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white/40 dark:bg-gray-800/40 backdrop-blur-lg rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-white/30 dark:border-gray-700/30 hover:border-blue-200/30"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
           >
-            <div className="p-8">
-              <motion.h3 
-                className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 {project.title}
-              </motion.h3>
-              <motion.p 
-                className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.3 }}
-              >
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {project.description}
-              </motion.p>
-              <motion.div 
-                className="flex flex-wrap gap-2 mb-6"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.4 }}
-              >
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map(tech => (
                   <span
                     key={tech}
-                    className="px-4 py-1.5 bg-blue-100/50 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium border border-blue-200/30 dark:border-blue-700/30 hover:bg-blue-200/50 dark:hover:bg-blue-800/50 transition-colors duration-300"
+                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
                   >
                     {tech}
                   </span>
                 ))}
-              </motion.div>
-              <motion.div 
-                className="flex space-x-6"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.5 }}
-              >
-                <motion.a
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+              </div>
+              <div className="flex space-x-4">
+                <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 group/link"
+                  className="flex items-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 >
-                  <FaGithub className="h-5 w-5 mr-2 group-hover/link:rotate-12 transition-transform duration-300" />
-                  <span className="border-b border-transparent group-hover/link:border-current transition-colors duration-300">
-                    View Code
-                  </span>
-                </motion.a>
+                  <FaGithub className="h-5 w-5 mr-2" />
+                  Code
+                </a>
                 {project.live !== '#' && (
-                  <motion.a
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                  <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300 group/link"
+                    className="flex items-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                   >
-                    <FaExternalLinkAlt className="h-4 w-4 mr-2 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform duration-300" />
-                    <span className="border-b border-transparent group-hover/link:border-current transition-colors duration-300">
-                      Live Demo
-                    </span>
-                  </motion.a>
+                    <FaExternalLinkAlt className="h-4 w-4 mr-2" />
+                    Live Demo
+                  </a>
                 )}
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

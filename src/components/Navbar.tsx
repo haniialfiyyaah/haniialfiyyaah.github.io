@@ -1,79 +1,68 @@
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-interface NavbarProps {
-  activeSection: string;
-}
-
-const navItems = [
-  { id: 'home', label: 'Home' },
-  { id: 'tech', label: 'Tech Stack' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'about', label: 'About' },
-  { id: 'contact', label: 'Contact' }
-];
-
-const Navbar = ({ activeSection }: NavbarProps) => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.nav 
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50"
-    >
-      <div className="space-y-6 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md rounded-full py-6 px-3 shadow-lg border border-white/20 dark:border-gray-700/20">
-        {navItems.map((item) => (
-          <motion.div 
-            key={item.id} 
-            className="group flex items-center justify-end gap-3 cursor-pointer"
-            onClick={() => scrollToSection(item.id)}
-            whileHover={{ x: -6 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 text-xs font-medium text-gray-800 dark:text-gray-200 pr-2 whitespace-nowrap bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full py-1 px-3 shadow-sm border border-white/20 dark:border-gray-700/20">
-              {item.label}
-            </span>
-            <div
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 relative ${
-                activeSection === item.id
-                  ? 'bg-blue-500 scale-110 shadow-md shadow-blue-500/30'
-                  : 'bg-gray-400/50 hover:bg-gray-600/50 group-hover:scale-105'
-              }`}
-            >
-              {activeSection === item.id && (
-                <div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping"></div>
-              )}
+    <nav className="bg-white dark:bg-gray-800 shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-white">
+              Hani Alfiyyah
+            </Link>
+          </div>
+          
+          {/* Desktop menu */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Home
+              </Link>
+              <Link to="/projects" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Projects
+              </Link>
+              <Link to="/contact" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                Contact
+              </Link>
             </div>
-          </motion.div>
-        ))}
-      </div>
+          </div>
 
-      {/* Mobile Navigation Indicator */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 md:hidden">
-        <div className="flex space-x-3 bg-white/30 dark:bg-gray-800/30 backdrop-blur-md rounded-full p-2.5 shadow-lg border border-white/20 dark:border-gray-700/20">
-          {navItems.map((item) => (
-            <motion.div
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                activeSection === item.id
-                  ? 'bg-blue-500 scale-110 shadow-md shadow-blue-500/30'
-                  : 'bg-gray-400/50'
-              }`}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            >
+              {isOpen ? (
+                <XMarkIcon className="block h-6 w-6" />
+              ) : (
+                <Bars3Icon className="block h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
-    </motion.nav>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <Link to="/" className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium">
+              Home
+            </Link>
+            <Link to="/projects" className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium">
+              Projects
+            </Link>
+            <Link to="/contact" className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium">
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 
