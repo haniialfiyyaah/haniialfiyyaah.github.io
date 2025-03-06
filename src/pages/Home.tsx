@@ -93,7 +93,7 @@ const Home = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Hi, I'm Hani Alfiyyah 👋
+                Hi, I'm Hanii 👋
               </motion.h1>
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-20 dark:opacity-30 group-hover:opacity-40 transition duration-1000"></div>
             </div>
