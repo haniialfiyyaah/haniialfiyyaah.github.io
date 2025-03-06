@@ -2,7 +2,7 @@
   "name": "haniialfiyyaah.github.io",
   "private": true,
   "version": "0.0.0",
-  "homepage": ".",
+  "homepage": "https://haniialfiyyaah.github.io",
   "type": "module",
   "scripts": {
     "dev": "vite",
